@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>dbscan</name>
+  <version>0.0.0</version>
+  <description>A simple </description>
+  <author email="jcarlos3094@gmail.com">Jose Carlos Garcia Moreno</author>
+  <maintainer email="jcarlos3094@gmail.com">Jose Carlos Garcia Moreno</maintainer>
+  <license>Apache</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>eigen</depend>
+</package>

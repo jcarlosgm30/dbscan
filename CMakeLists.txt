@@ -1,17 +1,20 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(dbscan)
 
-add_library(${PROJECT_NAME} INTERFACE)
+find_package(catkin REQUIRED)
 
-target_compile_features(${PROJECT_NAME} INTERFACE nanoflann cxx_std_11)
+catkin_package(
+  INCLUDE_DIRS include
+)
 
+include_directories(include)
+include_directories(SYSTEM ${catkin_INCLUDE_DIRS})
 
-target_include_directories(dbscan
-	INTERFACE
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-		$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>)
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN "*.h"
+  PATTERN ".svn" EXCLUDE
+)
 
-install(TARGETS dbscan
-        EXPORT dbscanTargets)
-
-add_library(dbscan::dbscan ALIAS dbscan)
+add_executable(angle_test src/examples/angle_test.cpp)
+add_executable(position_test src/examples/position_test.cpp)
